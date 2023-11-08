@@ -1,6 +1,8 @@
 
 import com.codeborne.selenide.DragAndDropOptions;
 
+import com.codeborne.selenide.Selenide;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 
@@ -20,12 +22,29 @@ public class GitHubWork2 {
         Configuration.baseUrl = "https://the-internet.herokuapp.com/";
         Configuration.pageLoadStrategy = "eager";
     }
+    @AfterEach
+    void afterEach() {
+        Selenide.closeWebDriver();
+    }
+
     @Test
     void Moving() {
         open("drag_and_drop");
+        $("#column-b").shouldHave(text("B"));
+        $("#column-a").shouldHave(text("A"));
         $("#column-a").dragAndDrop(DragAndDropOptions.to("#column-b"));
-        $("#column-a").shouldHave(text("B"));
+        $("#column-b").shouldHave(text("B"));
+        $("#column-a").shouldHave(text("A"));
+    }
+
+    @Test
+            void Moving2()
+        {
+            $("#column-b").shouldHave(text("B"));
+            $("#column-a").shouldHave(text("A"));
         actions().dragAndDrop($("#column-a"), $("#column-b")).perform();
+            $("#column-b").shouldHave(text("B"));
+            $("#column-a").shouldHave(text("A"));
     }
 
 }
