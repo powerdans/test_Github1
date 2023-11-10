@@ -28,23 +28,24 @@ public class GitHubWork2 {
     }
 
     @Test
-    void Moving() {
+    void movingTest() {
         open("drag_and_drop");
         $("#column-b").shouldHave(text("B"));
         $("#column-a").shouldHave(text("A"));
         $("#column-a").dragAndDrop(DragAndDropOptions.to("#column-b"));
-        $("#column-b").shouldHave(text("B"));
-        $("#column-a").shouldHave(text("A"));
+        $("#column-b").shouldHave(text("A"));
+        $("#column-a").shouldHave(text("B"));
     }
 
     @Test
-            void Moving2()
-        {
-            $("#column-b").shouldHave(text("B"));
-            $("#column-a").shouldHave(text("A"));
+    void moving2Test()
+    {
+        open("drag_and_drop");
+        $("#column-b").shouldHave(text("B"));
+        $("#column-a").shouldHave(text("A"));
         actions().dragAndDrop($("#column-a"), $("#column-b")).perform();
-            $("#column-b").shouldHave(text("B"));
-            $("#column-a").shouldHave(text("A"));
+        $("#column-b").shouldHave(text("A"));
+        $("#column-a").shouldHave(text("B"));
     }
 
 }

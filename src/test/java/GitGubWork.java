@@ -5,7 +5,6 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 public class GitGubWork {
@@ -13,7 +12,6 @@ public class GitGubWork {
     @BeforeAll
     static void beforeAll() {
         Configuration.browserSize = "1600x1080";
-        Configuration.baseUrl = "https://github.com/";
         Configuration.pageLoadStrategy = "eager";
 
 
@@ -21,7 +19,7 @@ public class GitGubWork {
     }
 
     @Test
-    void Github() {
+    void githubTest() {
         open("https://github.com/");
         $(byText("Solutions")).hover();
         $("[href=\"/enterprise\"]").shouldHave(text("Enterprise"));
